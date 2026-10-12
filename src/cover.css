@@ -1,0 +1,142 @@
+@font-face {
+  font-family: "Cover Script";
+  src: url("/fonts/GreatVibes-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+main > section.wedding-cover {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at 75% 18%, #f3ded961, transparent 55%),
+    radial-gradient(ellipse at 15% 88%, #dbe4ce80, transparent 50%),
+    #f7f3eacc;
+}
+.wedding-cover-paper {
+  position: relative;
+  width: min(460px, max(360px, calc((100svh - 140px) * .5625)));
+  container-type: inline-size;
+  aspect-ratio: 9 / 16;
+  background: #f8f3e9;
+  isolation: isolate;
+  box-shadow: 0 8px 40px #66574112;
+}
+.wedding-cover-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.cover-invitation-note {
+  position: absolute;
+  top: 13%;
+  left: 7%;
+  width: 18%;
+  color: #fff1ce;
+}
+.cover-invitation-note p {
+  margin: 0 0 10px;
+  font-family: var(--serif);
+  font-size: clamp(11px, 1.1vw, 15px);
+  line-height: 1.15;
+  color: inherit;
+  letter-spacing: .5px;
+}
+.cover-invitation-note > span {
+  font-family: "Cover Script", cursive;
+  font-size: clamp(19px, 1.7vw, 24px);
+  line-height: .95;
+}
+.cover-couple-names {
+  position: absolute;
+  top: 13.5%;
+  left: 32%;
+  width: 65%;
+  margin: 0;
+  font-family: "Cover Script", "Playfair Display", serif;
+  font-size: clamp(34px, 12cqi, 58px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0;
+  color: #701b20;
+  text-shadow: 0 1px 0 #fff7ecb3;
+}
+.cover-couple-names > span {
+  display: block;
+}
+.cover-couple-names .cover-ampersand {
+  margin-left: 12px;
+  font-size: .8em;
+  line-height: 1.05;
+  padding-block: 2px;
+}
+.cover-wedding-date {
+  position: absolute;
+  left: 7%;
+  top: 41%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  font-family: "Be Vietnam Pro", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #fff1ce;
+}
+.cover-open-button {
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  min-height: 48px;
+  white-space: nowrap;
+  border-radius: 5px;
+  background: #fbf5e7b3;
+  color: #701b20;
+}
+.cover-open-button > span {
+  font-family: "Cover Script", "Playfair Display", serif;
+  font-size: 28px;
+  border-bottom: 1px solid #701b2059;
+}
+.cover-open-button:hover {
+  background: #fff9ec;
+}
+.cover-open-button .arrow-icon {
+  animation: bob 2s ease-in-out infinite;
+}
+@media (max-width: 760px) {
+  main > section.wedding-cover {
+    padding: 0;
+  }
+  .wedding-cover-paper {
+    width: min(100%, 460px);
+    box-shadow: none;
+  }
+  .cover-couple-names {
+    font-size: clamp(34px, 10.8vw, 52px);
+  }
+  .cover-invitation-note p {
+    font-size: clamp(11px, 3.2vw, 14px);
+  }
+  .cover-invitation-note > span {
+    font-size: clamp(18px, 5vw, 24px);
+  }
+  .cover-wedding-date {
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cover-open-button .arrow-icon {
+    animation: none;
+  }
+}

@@ -1,0 +1,119 @@
+/* Nền màu nước, quạt giấy và cánh hoa theo mẫu tham khảo. */
+main > section:not(.wedding-cover), main > .footer {
+  --watercolor-fade: 90px;
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(to bottom,
+      var(--paper) 0,
+      #fbf6eb00 var(--watercolor-fade),
+      #fbf6eb00 calc(100% - var(--watercolor-fade)),
+      var(--paper) 100%),
+    url("/images/wedding-watercolor-paper.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  border-top: 0;
+}
+main > section:nth-of-type(even):not(.wedding-cover), main > .footer {
+  background-image:
+    linear-gradient(to bottom,
+      var(--paper) 0,
+      #b5c39a18 var(--watercolor-fade),
+      #b5c39a18 calc(100% - var(--watercolor-fade)),
+      var(--paper) 100%),
+    url("/images/wedding-watercolor-paper.png");
+}
+main > section.wedding-cover {
+  background:
+    linear-gradient(to bottom, #fbf6eb00 calc(100% - 90px), var(--paper) 100%),
+    radial-gradient(ellipse at 75% 18%, #f3ded961, transparent 55%),
+    radial-gradient(ellipse at 15% 88%, #dbe4ce80, transparent 50%),
+    var(--paper);
+}
+.wedding-cover-paper {
+  overflow: hidden;
+  background: #f9f4e9 url("/images/wedding-watercolor-paper.png") center / cover no-repeat;
+}
+.paper-fan {
+  position: absolute;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+.cover-fan-upper {
+  width: 65%;
+  right: -15%;
+  top: 34%;
+  transform: rotate(76deg);
+  opacity: .8;
+  z-index: -1;
+}
+.cover-fan-lower {
+  width: 90%;
+  left: -34%;
+  bottom: -8%;
+  transform: rotate(18deg);
+  opacity: .82;
+  z-index: -1;
+}
+.wedding-cover-art {
+  z-index: 0;
+  pointer-events: none;
+}
+.cover-sticker {
+  position: absolute;
+  z-index: 0;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 2px 2px #806b4520);
+}
+.cover-sticker-lotus {
+  width: 19%;
+  height: 9%;
+  top: 3.5%;
+  right: 5%;
+  transform: rotate(7deg);
+}
+.cover-sticker-sage {
+  width: 22%;
+  height: 20%;
+  top: 53%;
+  left: 4%;
+  transform-origin: top center;
+  animation: cover-lantern-swing 8s ease-in-out infinite alternate;
+}
+@keyframes cover-lantern-swing {
+  from { transform: rotate(-4deg); }
+  to { transform: rotate(4deg); }
+}
+.cover-invitation-note,
+.cover-couple-names,
+.cover-wedding-date,
+.cover-open-button {
+  z-index: 1;
+}
+.petal-background {
+  z-index: 2;
+}
+.floating-petal {
+  height: 100%;
+  border-radius: 0;
+  background: url("/images/wedding-petal.png") center / contain no-repeat;
+  box-shadow: none;
+}
+/* Giữ lớp bố cục cho các section có đèn lồng trang trí. */
+.invitation-section,
+.album-section,
+.details-section,
+.gift-section {
+  position: relative;
+  isolation: isolate;
+}
+@media (max-width: 760px) {
+  main > section:not(.wedding-cover), main > .footer {
+    --watercolor-fade: 64px;
+  }
+  .petal-track { width: calc(var(--petal-size) * .85); height: calc(var(--petal-size) * .85); }
+}

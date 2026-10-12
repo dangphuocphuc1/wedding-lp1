@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { wedding } from "./data/wedding";
-import { Botanical, Flower } from "./components/Botanical";
 import { Countdown } from "./components/Countdown";
 import { RsvpForm } from "./components/RsvpForm";
 import { Guestbook } from "./components/Guestbook";
@@ -8,9 +7,11 @@ import { Modal } from "./components/Modal";
 import { downloadCalendar } from "./lib/calendar";
 import { FloatingPetals } from "./components/FloatingPetals";
 import { ArrowIcon } from "./components/ArrowIcon";
-import { ExpandIcon } from "./components/ExpandIcon";
-import { OpenInvitationButton } from "./components/OpenInvitationButton";
+import { PhotoSlider } from "./components/PhotoSlider";
+import { WeddingCover } from "./components/WeddingCover";
 import { ToastIcon } from "./components/ToastIcon";
+import { HangingLanterns } from "./components/HangingLanterns";
+import { PaperFan } from "./components/PaperFan";
 
 function SectionTitle({
   eyebrow,
@@ -32,23 +33,7 @@ function SectionTitle({
 
 export default function App() {
   const names = `${wedding.groom.name} & ${wedding.bride.name}`;
-  const weddingDate = new Date(wedding.date);
-  const weekday = new Intl.DateTimeFormat("vi-VN", {
-    weekday: "long",
-    timeZone: "Asia/Ho_Chi_Minh",
-  })
-    .format(weddingDate)
-    .toUpperCase();
-  const stickerDate = new Intl.DateTimeFormat("en-GB", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "2-digit",
-    timeZone: "Asia/Ho_Chi_Minh",
-  })
-    .format(weddingDate)
-    .replaceAll("/", " · ");
   const [opened, setOpened] = useState(false);
-  const [photo, setPhoto] = useState<number | null>(null);
   const [giftOpen, setGiftOpen] = useState(false);
   const [copyStatus, setCopyStatus] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -61,13 +46,6 @@ export default function App() {
           ? "instant"
           : "smooth",
       });
-  }
-  function movePhoto(direction: number) {
-    setPhoto((current) =>
-      current === null
-        ? null
-        : (current + direction + wedding.photos.length) % wedding.photos.length,
-    );
   }
   return (
     <>
@@ -84,7 +62,7 @@ export default function App() {
           {wedding.groom.name[0].toLowerCase()}
           <span>&</span>
           {wedding.bride.name[0].toLowerCase()}
-          <Flower />
+
         </a>
         <button
           className="menu-toggle icon-button"
@@ -108,59 +86,11 @@ export default function App() {
         </nav>
       </header>
       <main id="main">
-        <section id="home" className="hero">
-          <div className="hero-copy">
-            <div className="hero-label">
-              <span className="tiny-line" /> WE’RE GETTING MARRIED{" "}
-              <span className="tiny-line" />
-            </div>
-            <p className="hero-pretitle">Một lời hẹn. Một đời bên nhau.</p>
-            <h1>
-              {wedding.groom.name}
-              <span className="hero-ampersand">&</span>
-              {wedding.bride.name}
-              <Flower className="name-flower" />
-            </h1>
-            <p className="hero-description">
-              Chúng mình sắp bắt đầu một hành trình mới.
-              <br />
-              Mời bạn đến, mang theo nụ cười và một chút yêu thương.
-            </p>
-            <div className="hero-date">
-              <span>{weekday}</span>
-              <strong>{wedding.dateShort}</strong>
-              <span>TP. Đà Nẵng</span>
-            </div>
-            <OpenInvitationButton opened={opened} onClick={openInvitation} />
-            <p className="handwritten">
-              Dành cho những người chúng mình thương ♡
-            </p>
-          </div>
-          <div className="hero-art">
-            <div className="photo-arch">
-              <img
-                src={wedding.photos[0].src}
-                alt={wedding.photos[0].alt}
-                fetchPriority="high"
-              />
-              <span className="arch-caption">you, me & forever.</span>
-            </div>
-            <Botanical className="hero-botanical" />
-            <div className="date-sticker">
-              <span>SAVE THE</span>
-              <strong>date</strong>
-              <span>{stickerDate}</span>
-            </div>
-            <Flower className="hero-flower" />
-            <span className="photo-note">và thế là, chúng mình có nhau.</span>
-          </div>
-          <a href="#invitation" className="scroll-hint">
-            CUỘN ĐỂ KHÁM PHÁ <ArrowIcon direction="down" />
-          </a>
-        </section>
+        <WeddingCover opened={opened} onOpen={openInvitation} />
 
         <section id="invitation" className="invitation-section section">
-          <Botanical className="invitation-botanical" />
+          <PaperFan className="section-fan section-fan-right" />
+          <HangingLanterns />
           <span className="eyebrow">TRÂN TRỌNG KÍNH MỜI</span>
           <h2>
             Bạn là một phần
@@ -184,6 +114,7 @@ export default function App() {
         </section>
 
         <section className="families section container">
+          <HangingLanterns side="left" />
           <SectionTitle
             eyebrow="HAI GIA ĐÌNH, MỘT NIỀM VUI"
             title="Trân trọng báo tin lễ vu quy"
@@ -246,6 +177,8 @@ export default function App() {
         </section>
 
         <section id="story" className="story-section section">
+          <PaperFan className="section-fan section-fan-left" />
+          <HangingLanterns />
           <div className="container">
             <SectionTitle
               eyebrow="OUR LITTLE LOVE STORY"
@@ -256,7 +189,7 @@ export default function App() {
               {wedding.story.map((item, index) => (
                 <article className="story-card" key={item.year}>
                   <span className="story-number">0{index + 1}</span>
-                  <Flower />
+
                   <span className="story-year">{item.year}</span>
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
@@ -267,6 +200,8 @@ export default function App() {
         </section>
 
         <section id="album" className="album-section section container">
+          <PaperFan className="section-fan section-fan-left" />
+          <HangingLanterns />
           <div className="album-heading">
             <SectionTitle
               eyebrow="NHỮNG NGÀY CÓ NHAU"
@@ -275,27 +210,15 @@ export default function App() {
             />
             <span className="album-note">made with love ♡</span>
           </div>
-          <div className="album-grid">
-            {wedding.photos.map((item, index) => (
-              <button
-                className={`album-photo photo-${index}`}
-                key={item.src}
-                onClick={() => setPhoto(index)}
-                aria-label={`Xem ảnh ${index + 1}: ${item.alt}`}
-              >
-                <img src={item.src} alt={item.alt} loading="lazy" />
-                <span className="photo-expand" aria-hidden="true">
-                  <ExpandIcon />
-                </span>
-              </button>
-            ))}
-          </div>
+          <PhotoSlider photos={wedding.photos} />
           <p className="album-help">
-            Chạm vào ảnh để xem trọn khoảnh khắc · Ảnh minh họa
+            Những khoảnh khắc của chúng mình, nối tiếp mãi yêu thương.
           </p>
         </section>
 
         <section id="celebration" className="celebration-section section">
+          <PaperFan className="section-fan section-fan-right" />
+          <HangingLanterns side="left" />
           <div className="container">
             <SectionTitle
               eyebrow="SAVE OUR DATE"
@@ -350,7 +273,7 @@ export default function App() {
             </ol>
           </div>
           <aside className="dress-code">
-            <Flower />
+
             <span className="eyebrow">DRESS CODE</span>
             <h3>Mặc đẹp theo cách của bạn</h3>
             <p>
@@ -392,6 +315,8 @@ export default function App() {
         </section> */}
 
         <section id="wishes" className="wishes-section section container">
+          <PaperFan className="section-fan section-fan-left" />
+          <HangingLanterns />
           <SectionTitle
             eyebrow="GỬI GẮM YÊU THƯƠNG"
             title="Những lời chúc ở lại"
@@ -417,7 +342,9 @@ export default function App() {
           </button>
         </section>
         <footer className="footer">
-          <Flower />
+          <PaperFan className="section-fan section-fan-right" />
+          <HangingLanterns side="left" />
+
           <span className="eyebrow">WITH ALL OUR LOVE</span>
           <h2>Cảm ơn vì đã thương chúng mình.</h2>
           <p>Hẹn gặp bạn trong ngày thật đẹp ấy.</p>
@@ -429,41 +356,6 @@ export default function App() {
           </div>
         </footer>
       </main>
-      {photo !== null && (
-        <Modal
-          title={`Ảnh cưới ${photo + 1} trên ${wedding.photos.length}`}
-          onClose={() => setPhoto(null)}
-          className="gallery-modal"
-          onKeyDown={(key) => {
-            if (key === "ArrowLeft") movePhoto(-1);
-            if (key === "ArrowRight") movePhoto(1);
-          }}
-        >
-          <img
-            src={wedding.photos[photo].src}
-            alt={wedding.photos[photo].alt}
-          />
-          <div className="gallery-controls">
-            <button
-              className="icon-button"
-              onClick={() => movePhoto(-1)}
-              aria-label="Ảnh trước"
-            >
-              <ArrowIcon direction="left" />
-            </button>
-            <span>
-              {photo + 1} / {wedding.photos.length}
-            </span>
-            <button
-              className="icon-button"
-              onClick={() => movePhoto(1)}
-              aria-label="Ảnh tiếp theo"
-            >
-              <ArrowIcon />
-            </button>
-          </div>
-        </Modal>
-      )}
       {giftOpen && (
         <Modal
           title="Hộp quà mừng"
@@ -472,7 +364,7 @@ export default function App() {
             setCopyStatus("");
           }}
         >
-          <Flower />
+
           <h2>Hộp quà mừng</h2>
           {wedding.gifts.length ? (
             wedding.gifts.map((gift) => (

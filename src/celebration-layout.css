@@ -1,0 +1,105 @@
+/* Xen kẽ màu nước / trắng theo từng phần, tính cả footer cuối trang. */
+main > :is(section, footer):nth-child(odd):not(.wedding-cover) {
+  --section-wash: #edc8c044;
+  background-image:
+    linear-gradient(to bottom,
+      #fff 0,
+      #ffffff00 var(--watercolor-fade),
+      #ffffff00 calc(100% - var(--watercolor-fade)),
+      #fff 100%),
+    linear-gradient(var(--section-wash), var(--section-wash)),
+    url("/images/wedding-watercolor-paper.png");
+}
+main > :is(section, footer):nth-child(even):not(.wedding-cover) {
+  background-color: #fff;
+  background-image: none;
+  border-top: 0;
+}
+.album-section {
+  position: relative;
+}
+.hanging-lanterns {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: 150px;
+  height: 205px;
+  pointer-events: none;
+  user-select: none;
+}
+.hanging-lanterns-left { left: 18px; }
+.hanging-lanterns-right { right: 18px; }
+.hanging-lantern {
+  position: absolute;
+  display: block;
+  transform-origin: top center;
+  animation: section-lantern-sway 9s ease-in-out infinite alternate;
+}
+.hanging-lantern::before {
+  content: "";
+  position: absolute;
+  bottom: calc(100% - 4px);
+  left: 50%;
+  width: 1px;
+  height: 30px;
+  background: #a68e6280;
+}
+.hanging-lantern img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.hanging-lantern-main { top: 24px; left: 5px; width: 78px; height: 134px; }
+.hanging-lantern-small { top: 52px; right: 0; width: 53px; height: 99px; animation-delay: -4s; }
+.hanging-lantern-small::before { height: 58px; }
+@keyframes section-lantern-sway {
+  from { transform: rotate(-3deg); }
+  to { transform: rotate(3deg); }
+}
+@media (max-width: 1100px) {
+  .hanging-lanterns { width: 104px; height: 142px; }
+  .hanging-lantern-main { width: 59px; height: 99px; top: 18px; }
+  .hanging-lantern-small { width: 38px; height: 71px; top: 42px; }
+  .hanging-lantern-small::before { height: 48px; }
+  .hanging-lanterns-left { left: 10px; }
+  .hanging-lanterns-right { right: 10px; }
+}
+@media (max-width: 760px) {
+  .hanging-lanterns { width: 60px; height: 90px; }
+  .hanging-lantern-main { top: 6px; left: 0; width: 56px; height: 75px; }
+  .hanging-lantern-main::before { height: 14px; }
+  .hanging-lantern-small { display: none; }
+  .hanging-lanterns-left { left: 8px; }
+  .hanging-lanterns-right { right: 8px; }
+}
+/* Laptop: trải toàn chiều rộng thay vì thu nhỏ thiệp dọc ở giữa. */
+@media (min-width: 1024px) {
+  main > section.wedding-cover {
+    padding: 0;
+    min-height: calc(100svh - 88px);
+  }
+  .wedding-cover-paper {
+    width: 100%;
+    height: calc(100svh - 88px);
+    min-height: 480px;
+    aspect-ratio: auto;
+    box-shadow: none;
+    background-size: 100% 100%;
+  }
+  .cover-olive-panel { left: 7%; top: 9%; width: 15%; height: 78%; }
+  .cover-panel-sprig.flower { left: 4%; top: -6%; width: 14%; }
+  .cover-invitation-note { left: 9%; top: 23%; width: 12%; }
+  .cover-invitation-note p { font-size: 18px; line-height: 1.3; margin-bottom: 20px; }
+  .cover-invitation-note > span { font-size: 32px; line-height: 1.05; }
+  .cover-wedding-date { left: 9%; top: 72%; font-size: 18px; gap: 4px; }
+  .cover-couple-names { left: 32%; top: 17%; width: 39%; font-size: clamp(60px, 6.8vw, 108px); }
+  .cover-couple-names > span { white-space: nowrap; }
+  .cover-couple-names .cover-ampersand { font-size: .65em; margin-left: 28px; }
+  .wedding-cover-art { width: 43%; height: 91%; }
+  .cover-fan-upper { width: 42%; top: 19%; right: -6%; }
+  .cover-fan-lower { width: 45%; left: -12%; bottom: -18%; }
+  .cover-sticker-lotus { width: 9%; height: 15%; left: 74%; right: auto; top: 5%; }
+  .cover-sticker-sage { width: 8%; height: 27%; left: 24%; top: 62%; }
+  .cover-open-button { left: 49%; bottom: 12%; padding: 10px 22px; }
+  .cover-open-button > span { font-size: 36px; }
+}

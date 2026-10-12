@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Flower } from "./Botanical";
 
 export function ScrollingWishList({ children }: { children: ReactNode }) {
   const listRef = useRef<HTMLDivElement>(null);
@@ -73,14 +72,6 @@ export function ScrollingWishList({ children }: { children: ReactNode }) {
 
   return (
     <div className="wish-list-frame">
-      <div className="wish-border-flowers" aria-hidden="true">
-        <Flower className="border-flower-top-left" />
-        <Flower className="border-flower-top-right" />
-        <Flower className="border-flower-bottom-left" />
-        <Flower className="border-flower-bottom-right" />
-        <Flower className="border-flower-bud-top" />
-        <Flower className="border-flower-bud-bottom" />
-      </div>
     <div className="wish-list-wrapper">
       <div className="wish-list" ref={listRef} role="region"
         aria-label="Những lời chúc" tabIndex={overflowing ? 0 : undefined}

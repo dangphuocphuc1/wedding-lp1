@@ -2,6 +2,7 @@
 export const wedding = {
   bride: {
     name: "Ly",
+    invitationName: "Khánh Ly",
     fullName: "Huỳnh Thị Khánh Ly",
     father: "Huỳnh Kim Dân",
     mother: "Hồ Thị Điệp",
@@ -14,6 +15,7 @@ export const wedding = {
   },
   groom: {
     name: "Phúc",
+    invitationName: "Phước Phúc",
     fullName: "Đặng Phước Phúc",
     father: "Đặng Văn Thanh",
     mother: "Đặng Thì Tầy",
@@ -81,14 +83,23 @@ export const wedding = {
   photos: [
     {
       src: "/images/_SOA6561.jpg",
-      alt: "Ảnh minh họa đôi uyên ương trong ngày cưới",
+      alt: "Phúc và Ly trong ngày cưới",
     },
-    { src: "/images/_SOA6843.jpg", alt: "Ảnh minh họa khoảnh khắc lễ cưới" },
+    { src: "/images/_SOA6843.jpg", alt: "Khoảnh khắc chung đôi của Phúc và Ly" },
     {
       src: "/images/_SOA7018.jpg",
-      alt: "Ảnh minh họa ngày vui của đôi uyên ương",
+      alt: "Ngày hạnh phúc của chúng mình",
     },
-    { src: "/images/_SOA7285.jpg", alt: "Ảnh minh họa kỷ niệm đám cưới" },
+    { src: "/images/_SOA7065.jpg", alt: "Kỷ niệm của Phúc và Ly — ảnh 4" },
+    { src: "/images/_SOA7105.jpg", alt: "Kỷ niệm của Phúc và Ly — ảnh 5" },
+    { src: "/images/_SOA7165.jpg", alt: "Kỷ niệm của Phúc và Ly — ảnh 6" },
+    { src: "/images/_SOA7166.jpg", alt: "Kỷ niệm của Phúc và Ly — ảnh 7" },
+    { src: "/images/_SOA7270.jpg", alt: "Kỷ niệm của Phúc và Ly — ảnh 8" },
+    { src: "/images/_SOA7285.jpg", alt: "Kỷ niệm của Phúc và Ly — ảnh 9" },
+    { src: "/images/_SOA7491.jpg", alt: "Kỷ niệm của Phúc và Ly — ảnh 10" },
+    { src: "/images/_SOA7541.jpg", alt: "Kỷ niệm của Phúc và Ly — ảnh 11" },
+    { src: "/images/_SOA7602.jpg", alt: "Kỷ niệm của Phúc và Ly — ảnh 12" },
+    { src: "/images/_SOA8198.jpg", alt: "Kỷ niệm của Phúc và Ly — ảnh 13" },
   ],
   timeline: [
     {

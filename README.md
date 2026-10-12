@@ -21,6 +21,11 @@ npm run preview
 - `src/data/wedding.ts`: tên, gia đình, ngày giờ, địa điểm, câu chuyện, ảnh, lịch trình, dress code, tài khoản/QR.
 - `index.html`: tiêu đề, mô tả và metadata chia sẻ của thiệp thật.
 - `src/styles.css`: màu sắc, font, bố cục và responsive.
+- `src/theme.css`: phong cách toàn web theo thiệp giấy màu nước, bảng màu olive/đỏ rượu, khung ảnh, thẻ sự kiện và sổ lời chúc; được nạp sau CSS cơ bản.
+- `src/cover.css`: bố cục thiệp mở đầu trên laptop/điện thoại, sử dụng font viết tay lưu tại `public/fonts/`.
+- `src/ornaments.css`: bộ họa tiết hoa hồng phấn, đèn lồng, vải xanh và bình phong; ảnh trang trí tại `public/images/wedding-lantern-floral.png` và `public/images/wedding-floral-sprig.png`. Prompt được lưu trong `docs/floral-ornaments.md`.
+- `src/watercolor.css`: quạt giấy xanh sage, nền giấy màu nước và cánh hoa hồng rơi; ba ảnh tại `public/images/wedding-sage-fan.png`, `wedding-watercolor-paper.png` và `wedding-petal.png`. Prompt trong `docs/fans-watercolor.md`.
+- `src/celebration-layout.css`: trang đầu phủ chiều rộng/cao màn hình laptop từ 1024px, thiệp dọc trên điện thoại, các cụm đèn lồng treo và nền màu nước/trắng xen kẽ với chuyển tiếp mềm.
 - Đặt ảnh thật trong `public/images/`, rồi dùng đường dẫn `/images/ten-anh.webp` trong cấu hình. Ảnh minh họa Unsplash đã lưu tại dự án; font tải từ Google Fonts, cần mạng và có font dự phòng. Có thể lưu font tại dự án trước khi phát hành.
 
 Ảnh minh họa gốc: [1](https://images.unsplash.com/photo-1519741497674-611481863552), [2](https://images.unsplash.com/photo-1511285560929-80b456fea0bc), [3](https://images.unsplash.com/photo-1523438885200-e635ba2c371e), [4](https://images.unsplash.com/photo-1529636798458-92182e662485).

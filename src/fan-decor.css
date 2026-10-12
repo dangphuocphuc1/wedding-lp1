@@ -1,0 +1,26 @@
+/* Điểm quạt ở các góc section, xen kẽ trái/phải để bố cục thoáng. */
+.wedding-cover-paper::before { content: none; }
+.section-fan {
+  width: clamp(100px, 12vw, 170px);
+  height: auto;
+  bottom: 14px;
+  opacity: .55;
+  z-index: -1;
+}
+.section-fan-right { right: 16px; transform: rotate(-22deg); }
+.section-fan-left { left: 12px; transform: rotate(18deg); }
+.cover-fan-upper {
+  width: 66%;
+  right: -12%;
+  top: 48%;
+  transform: rotate(-45deg);
+  opacity: .8;
+}
+@media (min-width: 1024px) {
+  .cover-fan-upper { width: 36%; right: 2%; top: 51%; transform: rotate(-35deg); }
+}
+@media (max-width: 760px) {
+  .section-fan { width: 76px; bottom: 10px; opacity: .4; }
+  .section-fan-right { right: 8px; }
+  .section-fan-left { left: 8px; }
+}

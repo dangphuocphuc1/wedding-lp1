@@ -1,0 +1,45 @@
+/* Dùng trực tiếp artwork gốc để giữ nguyên giấy, cành hoa, quạt và đèn lồng. */
+main > section.wedding-cover {
+  background:
+    linear-gradient(to bottom, #ffffff00 calc(100% - 140px), #fff 100%),
+    radial-gradient(ellipse at 75% 18%, #f3ded961, transparent 55%),
+    radial-gradient(ellipse at 15% 88%, #dbe4ce80, transparent 50%),
+    var(--paper);
+}
+.wedding-cover-paper { box-shadow: none; }
+.wedding-cover-paper::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 20%;
+  z-index: 0;
+  background: linear-gradient(to bottom, #ffffff00, #ffffff66 40%, #fff 100%);
+  pointer-events: none;
+}
+.cover-desktop-decor { display: none; }
+.cover-reference-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+}
+@media (max-width: 1023px) {
+.wedding-cover-paper { background: #f5eddd; }
+.cover-invitation-note { top: 12%; left: 7%; width: 19%; }
+.cover-invitation-note p { font-size: clamp(10px, 2.8vw, 13px); }
+.cover-wedding-date { left: 8%; top: 40%; }
+.cover-couple-names { left: 33%; top: 13%; width: 63%; }
+.cover-open-button {
+  bottom: 4%;
+  background: #fbf5e7e6;
+  box-shadow: 0 3px 16px #66574116;
+}
+}
+@media (min-width: 1024px) {
+  .cover-reference-art { display: none; }
+  .cover-desktop-decor { display: contents; }
+}

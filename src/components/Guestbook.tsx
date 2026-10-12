@@ -2,7 +2,6 @@ import { useEffect, useState, type FormEvent } from "react";
 import { readLocal, type Wish } from "../lib/storage";
 import { loadWishes, sendWish, sharedWishesEnabled } from "../lib/wishes";
 import { ScrollingWishList } from "./ScrollingWishList";
-import { Flower } from "./Botanical";
 
 export function Guestbook() {
   const [wishes, setWishes] = useState(() =>
@@ -107,7 +106,7 @@ export function Guestbook() {
             <article className="wish-card" key={wish.id}>
               <div className="wish-card-decoration" aria-hidden="true">
                 <span className="quote-mark">“</span>
-                <Flower className="wish-card-flower" />
+
               </div>
               <p>{wish.message}</p>
               <div className="wish-author">

@@ -1,5 +1,4 @@
 import { ArrowIcon } from "./ArrowIcon";
-import { Flower } from "./Botanical";
 
 export function OpenInvitationButton({
   opened,
@@ -36,7 +35,7 @@ export function OpenInvitationButton({
         <path d="m28 19-11 16 8-3 3 5 3-18m1 0 11 16-8-3-3 5-3-18" fill="#edc5cc" stroke="#c8909d" strokeWidth="1.2" strokeLinejoin="round" />
         <ellipse cx="30" cy="18" rx="5" ry="4" fill="#e4afba" stroke="#c8909d" strokeWidth="1.2" />
       </svg>
-      <Flower className="invitation-button-flower" />
+
     </div>
   );
 }
