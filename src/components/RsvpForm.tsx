@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { ArrowIcon } from "./ArrowIcon";
 import { saveRsvp } from "../lib/storage";
 
 export function RsvpForm() {
@@ -102,7 +103,7 @@ export function RsvpForm() {
         />
       </label>
       <button className="button primary" type="submit">
-        Gửi phản hồi <span aria-hidden="true">↗</span>
+        Gửi phản hồi <ArrowIcon />
       </button>
       <p className="form-note">
         Bản mẫu: phản hồi chỉ được lưu trên trình duyệt của bạn.

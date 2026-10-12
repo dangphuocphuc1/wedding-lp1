@@ -16,7 +16,7 @@ export const wedding = {
     name: "Phúc",
     fullName: "Đặng Phước Phúc",
     father: "Đặng Văn Thanh",
-    mother: "Đặng Thì Tây",
+    mother: "Đặng Thì Tầy",
     role: "Út nam",
     portrait: {
       src: "/images/_SOA7602.jpg",

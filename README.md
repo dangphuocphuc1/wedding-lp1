@@ -31,7 +31,27 @@ Màn mở thiệp và điều hướng, lời mời, hai gia đình, câu chuy�
 
 ## Giới hạn bản khung
 
-RSVP và lời chúc chỉ lưu trong `localStorage` của trình duyệt, chưa gửi cho chủ thiệp hay chia sẻ giữa thiết bị. Để gửi khách thật, thay các hàm trong `src/lib/storage.ts` bằng API, bổ sung xác thực dữ liệu phía server, hạn chế spam, quyền truy cập danh sách khách và duyệt lời chúc. Không đưa khóa bí mật vào frontend.
+RSVP vẫn lưu trong `localStorage` của trình duyệt. Lời chúc hỗ trợ Supabase theo hướng dẫn dưới đây; khi chưa có cấu hình, chỉ lưu thử trên thiết bị. Không tự đưa lời chúc thử lên cơ sở dữ liệu. Danh sách lời chúc dài cuộn nối tiếp theo vòng lặp, ẩn scrollbar, hỗ trợ cuộn tay/tạm dừng và chế độ giảm chuyển động.
+
+## Lưu lời chúc dùng chung trên web
+
+1. Tạo project tại [Supabase](https://supabase.com/dashboard).
+2. Mở **SQL Editor**, chạy toàn bộ `supabase/wishes.sql` để tạo bảng và quyền đọc/gửi. Khách không có quyền sửa hoặc xóa lời chúc.
+3. Copy `.env.example` thành `.env.local`, điền **Project URL** và **publishable key** (hoặc anon key cũ). URL ở Integrations → Data API; key ở Settings → API Keys. Không dùng secret hoặc service_role key trong các biến `VITE_*`.
+
+   ```env
+   VITE_SUPABASE_URL=https://your-project.supabase.co
+   VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_your_key
+   ```
+
+4. Khởi động lại `npm run dev`. Gửi lời chúc từ một trình duyệt rồi mở trình duyệt khác để kiểm tra dữ liệu dùng chung.
+5. Khi triển khai hosting, thêm hai biến môi trường vào cấu hình **build** và build/deploy lại. Vite đưa cấu hình vào bundle lúc build; sửa biến trên hosting mà không build lại sẽ chưa áp dụng.
+
+Danh sách tải 200 lời chúc mới nhất, làm mới mỗi 30 giây khi trang đang mở. Lời chúc được lưu tại Supabase ngay khi gửi thành công, không cần giữ trình duyệt mở. Nếu gửi lỗi, form giữ nguyên nội dung và không báo thành công hay chuyển sang lưu cục bộ.
+
+Tên và lời chúc được hiển thị công khai. SQL giới hạn độ dài và quyền truy cập; chưa bổ sung CAPTCHA, giới hạn tần suất hay quy trình duyệt lời chúc. Trước khi chia sẻ rộng rãi, có thể thêm các phần này qua endpoint server. RSVP cần backend riêng nếu muốn thu thập tập trung.
+
+Tham khảo: [Data REST API](https://supabase.com/docs/guides/api), [API keys](https://supabase.com/docs/guides/getting-started/api-keys), [Row Level Security](https://supabase.com/docs/guides/database/postgres/row-level-security).
 
 Phần quà mừng không dùng tài khoản giả. Thêm mục vào `wedding.gifts` để hiển thị QR và nút sao chép. Cập nhật địa chỉ đầy đủ của từng sự kiện và `mapUrl` trước khi sử dụng. Nhạc nền và trang quản lý chưa nằm trong bản khung.
 

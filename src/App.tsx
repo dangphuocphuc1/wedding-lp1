@@ -7,6 +7,10 @@ import { Guestbook } from "./components/Guestbook";
 import { Modal } from "./components/Modal";
 import { downloadCalendar } from "./lib/calendar";
 import { FloatingPetals } from "./components/FloatingPetals";
+import { ArrowIcon } from "./components/ArrowIcon";
+import { ExpandIcon } from "./components/ExpandIcon";
+import { OpenInvitationButton } from "./components/OpenInvitationButton";
+import { ToastIcon } from "./components/ToastIcon";
 
 function SectionTitle({
   eyebrow,
@@ -102,9 +106,6 @@ export default function App() {
           <a href="#celebration">Ngày chung đôi</a>
           <a href="#wishes">Lời chúc</a>
         </nav>
-        <a className="button small header-rsvp" href="#rsvp">
-          Mình sẽ đến <span aria-hidden="true">↗</span>
-        </a>
       </header>
       <main id="main">
         <section id="home" className="hero">
@@ -130,14 +131,7 @@ export default function App() {
               <strong>{wedding.dateShort}</strong>
               <span>TP. Đà Nẵng</span>
             </div>
-            <button
-              className={`button primary open-invitation ${opened ? "opened" : ""}`}
-              onClick={openInvitation}
-            >
-              <span aria-hidden="true">✉</span>{" "}
-              {opened ? "Xem lời mời" : "Mở thiệp của chúng mình"}{" "}
-              <span aria-hidden="true">↗</span>
-            </button>
+            <OpenInvitationButton opened={opened} onClick={openInvitation} />
             <p className="handwritten">
               Dành cho những người chúng mình thương ♡
             </p>
@@ -161,7 +155,7 @@ export default function App() {
             <span className="photo-note">và thế là, chúng mình có nhau.</span>
           </div>
           <a href="#invitation" className="scroll-hint">
-            CUỘN ĐỂ KHÁM PHÁ <span aria-hidden="true">↓</span>
+            CUỘN ĐỂ KHÁM PHÁ <ArrowIcon direction="down" />
           </a>
         </section>
 
@@ -175,7 +169,9 @@ export default function App() {
           </h2>
           <p>{wedding.invitation}</p>
           <div className="invitation-signature">
-            {names}
+            {wedding.groom.name}{" "}
+            <span className="invitation-ampersand">&</span>{" "}
+            {wedding.bride.name}
           </div>
           <div className="invitation-summary">
             <span>{wedding.dateLabel}</span>
@@ -183,7 +179,7 @@ export default function App() {
             <span>{wedding.venue}</span>
           </div>
           <a href="#rsvp" className="text-link">
-            Hẹn gặp bạn ở đó <span aria-hidden="true">↗</span>
+            Hẹn gặp bạn ở đó <ArrowIcon />
           </a>
         </section>
 
@@ -243,7 +239,7 @@ export default function App() {
           </div>
           <p className="family-footer">
             Lễ vu quy được cử hành lúc {wedding.events[0].time} ·{" "}
-            {wedding.dateLabel}
+            {wedding.dateLabel2}
             <br />
             {wedding.events[0].location}
           </p>
@@ -289,7 +285,7 @@ export default function App() {
               >
                 <img src={item.src} alt={item.alt} loading="lazy" />
                 <span className="photo-expand" aria-hidden="true">
-                  ↗
+                  <ExpandIcon />
                 </span>
               </button>
             ))}
@@ -311,7 +307,7 @@ export default function App() {
               {wedding.events.map((event) => (
                 <article className="event-card" key={event.id}>
                   <span className="event-symbol" aria-hidden="true">
-                    {event.id === "ceremony" ? "♡" : "✳"}
+                    {event.id === "ceremony" ? "♡" : <ToastIcon />}
                   </span>
                   <h3>{event.name}</h3>
                   <p className="event-time">{event.time}</p>
@@ -326,18 +322,12 @@ export default function App() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Xem chỉ đường ↗
+                      Xem chỉ đường <ArrowIcon direction="up-right" />
                     </a>
                   )}
                 </article>
               ))}
             </div>
-            <button
-              className="button secondary calendar-button"
-              onClick={downloadCalendar}
-            >
-              Thêm ngày vui vào lịch <span aria-hidden="true">＋</span>
-            </button>
           </div>
         </section>
 
@@ -379,7 +369,7 @@ export default function App() {
           </aside>
         </section>
 
-        <section id="rsvp" className="rsvp-section section">
+        {/* <section id="rsvp" className="rsvp-section section">
           <div className="container rsvp-grid">
             <div className="rsvp-copy">
               <span className="eyebrow">MỘT CHIẾC HẸN VỚI BẠN</span>
@@ -399,7 +389,7 @@ export default function App() {
             </div>
             <RsvpForm />
           </div>
-        </section>
+        </section> */}
 
         <section id="wishes" className="wishes-section section container">
           <SectionTitle
@@ -435,14 +425,10 @@ export default function App() {
           <span className="footer-date">{wedding.dateShort}</span>
           <div className="footer-bottom">
             <span>Một ngày vui. Một đời bên nhau.</span>
-            <span>Thiệp mẫu · Nội dung và hình ảnh minh họa</span>
-            <a href="#home">Về đầu trang ↑</a>
+            <a href="#home">Về đầu trang <ArrowIcon direction="up" /></a>
           </div>
         </footer>
       </main>
-      <a className="mobile-rsvp button primary" href="#rsvp">
-        Xác nhận tham dự <span aria-hidden="true">↗</span>
-      </a>
       {photo !== null && (
         <Modal
           title={`Ảnh cưới ${photo + 1} trên ${wedding.photos.length}`}
@@ -463,7 +449,7 @@ export default function App() {
               onClick={() => movePhoto(-1)}
               aria-label="Ảnh trước"
             >
-              ←
+              <ArrowIcon direction="left" />
             </button>
             <span>
               {photo + 1} / {wedding.photos.length}
@@ -473,7 +459,7 @@ export default function App() {
               onClick={() => movePhoto(1)}
               aria-label="Ảnh tiếp theo"
             >
-              →
+              <ArrowIcon />
             </button>
           </div>
         </Modal>
