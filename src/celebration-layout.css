@@ -65,8 +65,9 @@ main > :is(section, footer):nth-child(even):not(.wedding-cover) {
   .hanging-lanterns-right { right: 10px; }
 }
 @media (max-width: 760px) {
-  .hanging-lanterns { width: 60px; height: 90px; }
-  .hanging-lantern-main { top: 6px; left: 0; width: 56px; height: 75px; }
+  .hanging-lanterns { width: 84px; height: 124px; }
+  .hanging-lantern { animation-duration: 3s; }
+  .hanging-lantern-main { top: 6px; left: 0; width: 80px; height: 108px; }
   .hanging-lantern-main::before { height: 14px; }
   .hanging-lantern-small { display: none; }
   .hanging-lanterns-left { left: 8px; }

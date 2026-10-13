@@ -11,6 +11,7 @@ import "./celebration-layout.css";
 import "./photo-slider.css";
 import "./fan-decor.css";
 import "./cover-reference.css";
+import "./invitation-letter.css";
 
 clearTestDataOnce();
 

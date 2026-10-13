@@ -32,6 +32,19 @@ export function Countdown({ date }: { date: string }) {
     <div className="countdown" aria-label="Thời gian đến ngày cưới">
       {remaining.values.map((value, i) => (
         <div key={i}>
+          {["top-left", "top-right", "bottom-left", "bottom-right"].map((corner) => (
+            <svg
+              key={corner}
+              className={`countdown-corner countdown-corner-${corner}`}
+              viewBox="0 0 28 28"
+              fill="none"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M2 26V2H26M7 22V7H22V12H12V22H7Z" />
+              <path d="m17 17 3-3 3 3-3 3Z" />
+            </svg>
+          ))}
           <strong>{String(value).padStart(2, "0")}</strong>
           <span>{["Ngày", "Giờ", "Phút", "Giây"][i]}</span>
         </div>

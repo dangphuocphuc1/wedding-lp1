@@ -18,6 +18,7 @@ export function Modal({
     const dialog = ref.current!;
     const previous = document.activeElement as HTMLElement | null;
     dialog.showModal();
+    dialog.focus({ preventScroll: true });
     const overflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
@@ -31,6 +32,7 @@ export function Modal({
       ref={ref}
       className={`modal ${className}`}
       aria-label={title}
+      tabIndex={-1}
       onCancel={onClose}
       onKeyDown={(e) => onKeyDown?.(e.key)}
       onClick={(e) => {

@@ -3,24 +3,29 @@
   position: relative;
   display: flex;
   gap: 20px;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x pan-y pinch-zoom;
+  cursor: grab;
   scrollbar-width: none;
   padding-block: 4px 12px;
 }
 .photo-slider-track::-webkit-scrollbar { display: none; }
 .photo-slider-slide {
-  flex: 0 0 calc((100% - 40px) / 3);
+  flex: 0 0 calc((100% - 60px) / 3.5);
   aspect-ratio: 3 / 4;
   min-width: 0;
 }
-.photo-slider-slide { cursor: default; }
+.photo-slider-track.is-dragging { cursor: grabbing; }
+.photo-slider-slide { cursor: inherit; user-select: none; }
 .photo-slider-slide img { display: block; }
 .photo-slider-slide:hover img { transform: none; }
 @media (max-width: 1000px) {
-  .photo-slider-slide { flex-basis: calc((100% - 20px) / 2); }
+  .photo-slider-slide { flex-basis: calc((100% - 40px) / 2.3); }
 }
 @media (max-width: 600px) {
   .photo-slider-track { gap: 12px; }
-  .photo-slider-slide { flex-basis: 86%; }
+  .photo-slider-slide { flex-basis: 74%; }
   .album-help { text-align: center; line-height: 1.8; }
 }

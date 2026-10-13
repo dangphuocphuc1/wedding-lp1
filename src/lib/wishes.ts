@@ -1,7 +1,7 @@
 import { readLocal, saveWish, type Wish } from "./storage";
+import { supabaseConfig } from "./supabase";
 
-const projectUrl = (import.meta.env.VITE_SUPABASE_URL ?? "").trim().replace(/\/$/, "");
-const publicKey = (import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? "").trim();
+const { projectUrl, publicKey } = supabaseConfig;
 export const sharedWishesEnabled = Boolean(projectUrl && publicKey);
 
 async function request(path: string, options: RequestInit = {}) {

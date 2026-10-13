@@ -235,6 +235,21 @@ main > .footer {
 .countdown > div:not(:last-child)::after {
   display: none;
 }
+.countdown-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  color: #a48b59;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  pointer-events: none;
+}
+.countdown-corner-top-left { top: 3px; left: 3px; }
+.countdown-corner-top-right { top: 3px; right: 3px; transform: scaleX(-1); }
+.countdown-corner-bottom-left { bottom: 3px; left: 3px; transform: scaleY(-1); }
+.countdown-corner-bottom-right { bottom: 3px; right: 3px; transform: scale(-1); }
 .countdown strong {
   color: var(--wine);
   font-size: 40px;
@@ -466,6 +481,11 @@ textarea::placeholder {
   background: #fbf6ebeb;
   color: var(--wine);
 }
+.modal:focus { outline: none; }
+@media (max-width: 760px) {
+  .modal-close:focus { outline: none; box-shadow: none; }
+  .modal-close:focus-visible { background: #eee4cf; }
+}
 .gallery-modal {
   background: #f7f0df;
 }
@@ -499,6 +519,7 @@ textarea::placeholder {
   .album-photo { border-width: 3px; }
   .countdown { gap: 10px; }
   .countdown > div { min-width: 56px; padding: 10px 6px; }
+  .countdown-corner { width: 16px; height: 16px; }
   .countdown strong { font-size: 32px; }
   .events-grid { gap: 14px; }
   .event-card { padding: 30px 14px 26px; }

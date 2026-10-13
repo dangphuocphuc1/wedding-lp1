@@ -12,6 +12,7 @@ import { WeddingCover } from "./components/WeddingCover";
 import { ToastIcon } from "./components/ToastIcon";
 import { HangingLanterns } from "./components/HangingLanterns";
 import { PaperFan } from "./components/PaperFan";
+import { InvitationLetter } from "./components/InvitationLetter";
 
 function SectionTitle({
   eyebrow,
@@ -50,6 +51,7 @@ export default function App() {
   return (
     <>
       <FloatingPetals />
+      <InvitationLetter />
       <a className="skip-link" href="#main">
         Đến nội dung chính
       </a>
@@ -212,7 +214,7 @@ export default function App() {
           </div>
           <PhotoSlider photos={wedding.photos} />
           <p className="album-help">
-            Những khoảnh khắc của chúng mình, nối tiếp mãi yêu thương.
+            Vuốt hoặc kéo ngang để xem những khoảnh khắc của chúng mình.
           </p>
         </section>
 

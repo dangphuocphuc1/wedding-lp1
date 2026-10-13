@@ -32,6 +32,20 @@ npm run preview
 
 ## Có sẵn
 
+### Thư mời theo URL
+
+Link `/?invite=ph` tự mở lá thư riêng cho khách có mã `ph`. Thư gồm tên người được mời, lời mời tham dự, thời gian/địa điểm tiệc và lời cảm ơn. Có thể đóng bằng nút ×, Escape hoặc “Xem thiệp cưới”, rồi mở lại bằng nút “Thư mời” ở góc màn hình.
+
+Danh sách khách được quản lý trong bảng `public.invitees` trên Supabase. Thiết lập lần đầu:
+
+1. Trong **SQL Editor** của project Supabase đang dùng cho lời chúc, chạy toàn bộ `supabase/invitees.sql`. File tạo bảng, quyền tra mã và nhập danh sách hiện tại (`ph → Phúc`); chạy lại không ghi đè khách đã có.
+2. Vào **Table Editor → invitees** để thêm/sửa khách: `code` là mã viết thường, `name` là tên hiển thị, `active` bật/tắt thư mời. Ví dụ `code=al`, `name=Chị Lan`, `active=true`.
+3. Gửi link `/?invite=al`. Thay đổi tên hoặc thêm khách trên DB có hiệu lực khi mở/tải lại link, không cần build lại website.
+
+Sử dụng cùng `VITE_SUPABASE_URL` và `VITE_SUPABASE_PUBLISHABLE_KEY` trong `.env.local`. Mã dài tối đa 64 ký tự, bắt đầu bằng chữ/số, gồm chữ thường, số, `_` hoặc `-`; tên dài tối đa 100 ký tự và có thể gồm cách xưng hô hoặc tên gia đình. Không có mã hoặc không tìm thấy khách đang bật thì website hiển thị bình thường. Lỗi kết nối có nút thử lại và không dùng tên từ danh sách cũ.
+
+Website chỉ gọi RPC `lookup_invitee` để tra một mã; không có quyền đọc cả bảng, thêm/sửa/xóa khách. File `src/data/invitees.ts` chỉ giữ bản lưu danh sách cũ, không còn được website sử dụng. Tham khảo cách giới hạn quyền cho RPC trong [tài liệu Supabase](https://supabase.com/docs/guides/database/functions). Kiểm tra logic bằng `npm run test:invitation`.
+
 Màn mở thiệp và điều hướng, lời mời, hai gia đình, câu chuyện, album với cửa sổ xem ảnh lớn (phím trái/phải và Escape), lễ/tiệc, đếm ngược, tải lịch `.ics`, liên kết chỉ đường, lịch trình, dress code, RSVP, lưu bút, hộp quà và lời cảm ơn. Có menu điện thoại, hỗ trợ bàn phím, giảm chuyển động và trạng thái khi ngày cưới đã qua.
 
 ## Giới hạn bản khung

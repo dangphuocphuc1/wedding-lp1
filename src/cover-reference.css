@@ -17,6 +17,7 @@ main > section.wedding-cover {
   pointer-events: none;
 }
 .cover-desktop-decor { display: none; }
+.cover-color-filters { position: absolute; pointer-events: none; }
 .cover-reference-art {
   position: absolute;
   inset: 0;
@@ -42,4 +43,9 @@ main > section.wedding-cover {
 @media (min-width: 1024px) {
   .cover-reference-art { display: none; }
   .cover-desktop-decor { display: contents; }
+}
+@media (max-width: 760px) {
+  .cover-reference-art {
+    filter: saturate(1.8) brightness(1.07) url(#cover-color-balance);
+  }
 }
