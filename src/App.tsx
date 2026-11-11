@@ -61,10 +61,7 @@ export default function App() {
           href="#home"
           aria-label={`${names} — đầu trang`}
         >
-          {wedding.groom.name[0].toLowerCase()}
-          <span>&</span>
-          {wedding.bride.name[0].toLowerCase()}
-
+          <img src="/images/wedding-monogram.png" alt="" />
         </a>
         <button
           className="menu-toggle icon-button"

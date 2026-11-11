@@ -337,6 +337,12 @@ section[id] {
   align-items: center;
   gap: 3px;
 }
+.monogram img {
+  display: block;
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
 .monogram > span {
   font-size: 18px;
   color: #9b9e85;
