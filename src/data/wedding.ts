@@ -26,15 +26,15 @@ export const wedding = {
       scale: 1,
     },
   },
-  date: "2026-11-08T10:30:00+07:00",
-  dateLabel: "Chủ nhật, 08 tháng 11 năm 2026",
+  date: "2026-11-14T17:30:00+07:00",
+  dateLabel: "Thứ Bảy, 14 tháng 11 năm 2026",
   dateLabel2: "Thứ Bảy, 14 tháng 11 năm 2026",
-  dateShort: "08.11.2026",
+  dateShort: "14.11.2026",
   rsvpDeadline: "14.11.2026",
-  venue: "Nhà Văn Hóa Thôn Long Thành",
-  address: "Thôn Long Thành, Xã Tam Xuân, Thành Phố Đà Nẵng",
+  venue: "New Orient",
+  address: "20 Đống Đa, Hải Châu, Thành Phố Đà Nẵng",
   mapUrl:
-    "https://www.google.com/maps/search/?api=1&query=Thao+Dien+Ho+Chi+Minh",
+    "https://maps.app.goo.gl/fyn3MTEJ8Cs2ckWD8",
   invitation:
     "Giữa muôn vàn cuộc gặp gỡ, chúng mình đã tìm thấy nhau. Và ngày hạnh phúc ấy sẽ trọn vẹn hơn khi có bạn bên cạnh.",
   events: [
@@ -48,9 +48,9 @@ export const wedding = {
     {
       id: "reception",
       name: "Tiệc chung vui",
-      time: "10:30",
-      location: "Nhà Văn Hóa Thôn Long Thành",
-      address: "Thôn Long Thành, Xã Tam Xuân, Thành Phố Đà Nẵng",
+      time: "17:30",
+      location: "New Orient",
+      address: "20 Đống Đa, Hải Châu, Thành Phố Đà Nẵng",
     },
   ],
   story: [
