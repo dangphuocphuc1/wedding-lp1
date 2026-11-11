@@ -103,17 +103,17 @@ export const wedding = {
   ],
   timeline: [
     {
-      time: "10:30",
+      time: "17:30",
       title: "Đón bạn đến chơi",
       detail: "Chụp một tấm ảnh, kể một câu chuyện",
     },
     {
-      time: "11:30",
+      time: "18:00",
       title: "Khoảnh khắc chung đôi",
       detail: "Cùng chứng kiến lời hẹn trăm năm",
     },
     {
-      time: "12:00",
+      time: "18:30",
       title: "Nâng ly chung vui",
       detail: "Một bữa tiệc ấm áp bên những người thương",
     },

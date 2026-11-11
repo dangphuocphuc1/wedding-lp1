@@ -260,7 +260,7 @@ export default function App() {
           <div className="schedule">
             <SectionTitle
               eyebrow="TỪ LÚC GẶP NHAU ĐẾN LÚC TẠM BIỆT"
-              title="Một buổi trưa thật vui"
+              title="Một buổi tối thật vui"
             />
             <ol className="timeline">
               {wedding.timeline.map((item) => (
